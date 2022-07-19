@@ -36,20 +36,12 @@ class CategoryActionShould {
     @Test
     fun `Given a request return one category object`()
     {
-        var palabra : Array<String> = arrayOf("cosas")
-        var newList = Arrays.asList(initializeArray);
-        for(palabra in initializeArray)
-        {
-            println(palabra);
-        }
-        println(newList.containsAll(listOf(palabra)))
-        //assertTrue(Arrays.asList(initializeArray).contains(categoryAction.GetCategories(1)))
+        assertTrue(initializeArray.contains(categoryAction.GetCategories(1)[0]))
     }
 
     @Test
     fun `Check the return array's size`()
     {
-
         assertEquals(1, categoryAction.GetCategories(1).size)
     }
 

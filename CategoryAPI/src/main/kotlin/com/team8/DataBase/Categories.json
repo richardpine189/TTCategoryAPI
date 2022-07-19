@@ -1,0 +1,12 @@
+{
+  "Categories" : [
+    {
+      "CategoryName" : "Animales",
+      "Words" : ["Araña","Delfin"]
+    },
+    {
+      "CategoryName" : "Paises",
+      "Words" : ["Argentina","Chile"]
+    }
+]
+}
