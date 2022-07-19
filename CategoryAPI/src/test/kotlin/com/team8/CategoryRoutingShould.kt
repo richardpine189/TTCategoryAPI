@@ -1,16 +1,19 @@
 package com.team8
 
-import com.google.gson.Gson
-import com.team8.plugins.prueba
+import com.team8.models.Category
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.server.testing.*
 import junit.framework.TestCase.assertEquals
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.decodeFromString
 import org.junit.Test
 import kotlin.reflect.typeOf
 import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 
 class CategoryRoutingShould {
@@ -20,8 +23,6 @@ class CategoryRoutingShould {
         testApplication {
             val response = client.get("/Categories")
             assertEquals(HttpStatusCode.OK, response.status)
-
-            //assertEquals("Hello, world!", response.bodyAsText())
         }
     }
 
@@ -30,21 +31,11 @@ class CategoryRoutingShould {
         testApplication {
             val response = client.get("/Categories")
             val arrayCat = response.bodyAsText()
-            //println(arrayCat.nameCat)
-            val gson = Gson()
-            val deserializeArrayCat = gson.fromJson(arrayCat, prueba::class.java)
+            val categories = Json.decodeFromString<Array<Category>>(arrayCat);
 
-            assertNotNull(arrayCat)
+            // How to mock the action in a test?
+
+            assertTrue { categories is Array<Category> }
         }
     }
-
-/*@Test
-    fun testGetAllDog() {
-        withTestApplication({ module() }) {
-            handleRequest(HttpMethod.Get,"/Categories").apply {
-                assertEquals(HttpStatusCode.NotFound,response.status()
-                )
-            }
-        }
-    }*/
 }

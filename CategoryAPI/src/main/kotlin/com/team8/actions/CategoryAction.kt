@@ -1,4 +1,4 @@
-package com.team8.models
+package com.team8.actions
 
 import com.team8.Interfaces.ICategoryRepository
 

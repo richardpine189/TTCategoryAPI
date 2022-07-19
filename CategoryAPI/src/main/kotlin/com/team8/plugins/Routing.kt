@@ -1,5 +1,6 @@
 package com.team8.plugins
 
+import com.team8.models.Category
 import io.ktor.http.*
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
@@ -9,21 +10,20 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 
-@kotlinx.serialization.Serializable
-data class prueba(val nameCat : String)
+val listCat = listOf<Category>( Category("Animales", arrayOf("Araña", "Oso")), Category("Paises", arrayOf("Argentina", "Brasil")))
 
-val listCat = listOf<prueba>( prueba("Animales"), prueba("Paises"))
 fun Application.configureRouting() {
     routing {
         route("/Categories"){
             get{
-                val newResponde = Json.encodeToString(listCat[0])
-                call.respond(newResponde)
+                call.respond(listCat)
             }
+
             get("/{amountCategories}"){
             val amount = call.parameters["amountCategories"]?.toIntOrNull()
 
             }
+
             get("/{name}"){
 
             }
