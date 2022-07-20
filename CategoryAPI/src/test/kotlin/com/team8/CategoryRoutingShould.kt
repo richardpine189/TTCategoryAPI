@@ -38,4 +38,28 @@ class CategoryRoutingShould {
             assertTrue { categories is Array<Category> }
         }
     }
+
+    @Test
+    fun `Get list with amount 2`(){
+        testApplication {
+            val expectedSize = 2
+            val response = client.get("/Categories/${expectedSize}")
+
+            val deserializedResponse = Json.decodeFromString<Array<String>>(response.bodyAsText())
+
+            assertEquals(expectedSize, deserializedResponse.size)
+        }
+    }
+
+    @Test
+    fun `Get list with amount 3`(){
+        testApplication {
+            val expectedSize = 3
+            val response = client.get("/Categories/${expectedSize}")
+
+            val deserializedResponse = Json.decodeFromString<Array<String>>(response.bodyAsText())
+
+            assertEquals(expectedSize, deserializedResponse.size)
+        }
+    }
 }
