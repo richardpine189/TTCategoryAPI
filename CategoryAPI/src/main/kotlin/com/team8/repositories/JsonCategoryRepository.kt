@@ -7,17 +7,30 @@ import kotlinx.serialization.json.Json
 import java.io.File
 
 class JsonCategoryRepository(private val filePath: String = "./src/test/testCategories.json") : ICategoryRepository  {
-    override fun GetCategories(amountCategories: Int): Array<Category> {
+
+    fun GetAllCategories() : Array<Category> {
         val jsonString = File(filePath).readText(Charsets.UTF_8)
-        var categoryArray = Json.decodeFromString<Array<Category>>(jsonString)
-        categoryArray = categoryArray.sliceArray(0 until amountCategories)
+        return Json.decodeFromString(jsonString)
+    }
+
+    override fun GetCategories(amountCategories: Int?): Array<Category> {
+        var categoryArray = GetAllCategories()
+
+        amountCategories?.let {
+            categoryArray = categoryArray.sliceArray(0 until amountCategories)
+        }
+
         return categoryArray
     }
 
-    override fun GetCategoryNames(amountCategories: Int): Array<String> {
-        val jsonString = File(filePath).readText(Charsets.UTF_8)
-        var categoryArray = Json.decodeFromString<Array<Category>>(jsonString)
-        categoryArray = categoryArray.sliceArray(0 until amountCategories)
+    override fun GetCategoryNames(amountCategories: Int?): Array<String> {
+        val categoryArray = GetCategories(amountCategories)
+
         return categoryArray.map { it.categoryName }.toTypedArray()
+    }
+
+    override fun GetCategoryByName(name: String): Category {
+        val categories = GetAllCategories()
+        return categories.first{it.categoryName == name}
     }
 }

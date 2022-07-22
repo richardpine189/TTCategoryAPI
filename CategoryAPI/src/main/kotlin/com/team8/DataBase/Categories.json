@@ -1,12 +1,1 @@
-{
-  "Categories" : [
-    {
-      "CategoryName" : "Animales",
-      "Words" : ["Araña","Delfin"]
-    },
-    {
-      "CategoryName" : "Paises",
-      "Words" : ["Argentina","Chile"]
-    }
-]
-}
+[{"categoryName":"Animales","words":["Araña","Delfin"]},{"categoryName":"Paises","words":["Argentina","Chile"]},{"categoryName":"Marcas","words":["Etermax","Asus"]}]

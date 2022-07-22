@@ -24,7 +24,7 @@ class CategoryActionShould {
         fun `Setup`() {
             initializeArray = arrayOf("Empresas", "Frutas", "Nombres", "Paises", "Famosos")
             categoryArray = arrayOf<Category>(
-                Category("Empresas", arrayOf("Etermax", "Asus", "Volkswagen")),
+                Category("Marcas", arrayOf("Etermax", "Asus", "Volkswagen")),
                 Category("Frutas", arrayOf("Manzana", "Banana", "Anana")),
                 Category("Nombres", arrayOf("Richard", "Theo", "Paula")),
                 Category("Paises", arrayOf("Argentina", "Brasil", "Canada")),
@@ -32,8 +32,9 @@ class CategoryActionShould {
             )
 
             val categoryRepository: ICategoryRepository = mock()
-            whenever(categoryRepository.GetCategories(5)).thenReturn(initializeArray)
-            whenever(categoryRepository.GetCategories(1)).thenReturn(initializeArray.sliceArray(0..0))
+            whenever(categoryRepository.GetCategoryNames(5)).thenReturn(initializeArray)
+            whenever(categoryRepository.GetCategoryNames(1)).thenReturn(initializeArray.sliceArray(0..0))
+            whenever(categoryRepository.GetCategoryByName(categoryArray[0].categoryName)).thenReturn(categoryArray[0])
             categoryAction = CategoryAction(categoryRepository)
         }
     }
@@ -55,5 +56,15 @@ class CategoryActionShould {
         assertEquals(1, categoryAction.GetCategories(1).size)
     }
 
+    @Test
+    fun `Get category by name`()
+    {
+        val expectedCategory = categoryArray[0]
 
+        // Act
+        val result = categoryAction.GetCategoryByName(expectedCategory.categoryName)
+
+        // Assert
+        assertEquals(expectedCategory, result)
+    }
 }

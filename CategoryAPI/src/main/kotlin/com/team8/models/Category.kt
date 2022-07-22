@@ -4,6 +4,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Category(val categoryName: String, val words: Array<String>) {
+
+    fun ValidWord(word : String) : Boolean
+    {
+        return words.contains(word)
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
