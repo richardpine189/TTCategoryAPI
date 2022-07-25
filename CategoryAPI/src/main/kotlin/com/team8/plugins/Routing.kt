@@ -10,6 +10,7 @@ import io.ktor.http.*
 import io.ktor.resources.*
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.encodeToString
@@ -50,33 +51,50 @@ fun Application.configureRouting() {
 
         get("/isValid")
         {
-            val word = call.request.queryParameters["word"]
-            val categoryString = call.request.queryParameters["category"]
+            val numberOfCorrections = 3
 
-            if(word.isNullOrEmpty())
+            var words = arrayOfNulls<String>(numberOfCorrections)
+
+            for (i in 0 until numberOfCorrections)
+            {
+                words[i] = call.request.queryParameters["word[$i]"]
+            }
+
+            var categories = arrayOfNulls<String>(numberOfCorrections)
+
+            for (i in 0 until numberOfCorrections)
+            {
+                categories[i] = call.request.queryParameters["category[$i]"]
+            }
+
+            if(words.any{it == null})
             {
                 call.respond(HttpStatusCode.BadRequest, "Must send a word")
             }
             else
             {
-                if(categoryString.isNullOrEmpty())
+                if(categories.any{it == null})
                 {
                     call.respond(HttpStatusCode.BadRequest, "Must send a category")
                 }
                 else
                 {
-                    if(!categoryString[0].isLetter())
+                    if(categories.any{ !it!![0].isLetter() })
                     {
                         call.respond(HttpStatusCode.BadRequest, "Category must start with letter")
                     }
                     else {
                         val categoryAction: ICategoryGetter = CategoryAction(repository)
 
-                        val action = CorrectionAction(categoryAction);
+                        val action = CorrectionAction(categoryAction)
 
-                        val result = action.isValid(word, categoryString)
+                        var results = arrayOfNulls<Boolean>(numberOfCorrections)
 
-                        call.respond(result)
+                        for (i in 0 until numberOfCorrections){
+                            results[i] = action.isValid(words[i]!!, categories[i]!!)
+                        }
+
+                        call.respond(results)
                     }
                 }
             }

@@ -31,11 +31,11 @@ class CategoryRoutingShould {
         testApplication {
             val response = client.get("/Categories")
             val arrayCat = response.bodyAsText()
-            val categories = Json.decodeFromString<Array<Category>>(arrayCat);
+            val categories = Json.decodeFromString<Array<String>>(arrayCat);
 
             // How to mock the action in a test?
 
-            assertTrue { categories is Array<Category> }
+            assertTrue { categories is Array<String> }
         }
     }
 
