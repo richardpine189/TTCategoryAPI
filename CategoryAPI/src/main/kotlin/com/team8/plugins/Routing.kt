@@ -51,7 +51,7 @@ fun Application.configureRouting() {
 
         get("/isValid")
         {
-            val numberOfCorrections = 3
+            val numberOfCorrections = 5
 
             var words = arrayOfNulls<String>(numberOfCorrections)
 
