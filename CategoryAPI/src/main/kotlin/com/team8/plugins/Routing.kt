@@ -67,6 +67,9 @@ fun Application.configureRouting() {
                 categories[i] = call.request.queryParameters["category[$i]"]
             }
 
+            val letter = call.request.queryParameters["letter"]
+
+
             if(words.any{it == null})
             {
                 call.respond(HttpStatusCode.BadRequest, "Must send a word")
@@ -91,7 +94,7 @@ fun Application.configureRouting() {
                         var results = arrayOfNulls<Boolean>(numberOfCorrections)
 
                         for (i in 0 until numberOfCorrections){
-                            results[i] = action.isValid(words[i]!!, categories[i]!!)
+                            results[i] = action.isValid(words[i]!!, categories[i]!!,letter!![0])
                         }
 
                         call.respond(results)

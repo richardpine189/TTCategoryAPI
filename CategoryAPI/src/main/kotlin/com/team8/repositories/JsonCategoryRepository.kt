@@ -15,6 +15,7 @@ class JsonCategoryRepository(private val filePath: String = "./src/test/testCate
 
     override fun GetCategories(amountCategories: Int?): Array<Category> {
         var categoryArray = GetAllCategories()
+        categoryArray.shuffle()
 
         amountCategories?.let {
             categoryArray = categoryArray.sliceArray(0 until amountCategories)

@@ -1,13 +1,15 @@
 package com.team8.models
 
 import kotlinx.serialization.Serializable
+import java.util.*
 
 @Serializable
 data class Category(val categoryName: String, val words: Array<String>) {
 
-    fun ValidWord(word : String) : Boolean
+    fun ValidWord(word : String, letter : Char) : Boolean
     {
-        return words.contains(word)
+
+        return words.any { it.toUpperCase() == word.toUpperCase() } && word[0].toUpperCase() == letter.toUpperCase()
     }
 
     override fun equals(other: Any?): Boolean {
