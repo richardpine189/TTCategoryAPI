@@ -8,7 +8,6 @@ data class Category(val categoryName: String, val words: Array<String>) {
 
     fun ValidWord(word : String, letter : Char) : Boolean
     {
-
         return words.any { it.toUpperCase() == word.toUpperCase() } && word[0].toUpperCase() == letter.toUpperCase()
     }
 
