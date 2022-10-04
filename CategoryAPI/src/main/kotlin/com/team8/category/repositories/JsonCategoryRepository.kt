@@ -1,12 +1,12 @@
-package com.team8.repositories
+package com.team8.category.repositories
 
-import com.team8.Interfaces.ICategoryRepository
+import com.team8.category.Interfaces.ICategoryRepository
 import com.team8.models.Category
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.File
 
-class JsonCategoryRepository(private val filePath: String = "./src/test/testCategories.json") : ICategoryRepository  {
+class JsonCategoryRepository(private val filePath: String = "./src/test/testCategories.json") : ICategoryRepository {
 
     fun GetAllCategories() : Array<Category> {
         val jsonString = File(filePath).readText(Charsets.UTF_8)

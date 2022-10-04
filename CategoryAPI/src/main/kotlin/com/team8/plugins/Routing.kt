@@ -1,22 +1,15 @@
 package com.team8.plugins
 
-import com.team8.Interfaces.ICategoryGetter
-import com.team8.Interfaces.ICategoryRepository
 import com.team8.actions.CategoryAction
-import com.team8.actions.CorrectionAction
-import com.team8.models.Category
-import com.team8.repositories.JsonCategoryRepository
+import com.team8.category.Interfaces.ICategoryGetter
+import com.team8.category.Interfaces.ICategoryRepository
+import com.team8.category.actions.CorrectionAction
+import com.team8.category.repositories.JsonCategoryRepository
 import io.ktor.http.*
-import io.ktor.resources.*
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
-import io.ktor.server.request.*
 import io.ktor.server.response.*
-import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.serializer
-import java.util.Arrays
+
 
 val repository : ICategoryRepository = JsonCategoryRepository("./src/main/kotlin/com/team8/DataBase/Categories.json")
 

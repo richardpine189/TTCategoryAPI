@@ -1,9 +1,8 @@
-package com.team8
+package com.team8.categoryTest
 
-import com.team8.Interfaces.ICategoryRepository
+import com.team8.category.Interfaces.ICategoryRepository
+import com.team8.category.repositories.JsonCategoryRepository
 import com.team8.models.Category
-import com.team8.plugins.repository
-import com.team8.repositories.JsonCategoryRepository
 import org.junit.Test
 import org.junit.Assert.assertArrayEquals
 import org.junit.BeforeClass

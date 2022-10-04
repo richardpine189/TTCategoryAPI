@@ -6,6 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="94472ccf-5c2c-4925-a071-36ceebfe337c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/DataBase/Categories.json" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/category/DataBase/Categories.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/Interfaces/ICategoryGetter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/category/Interfaces/ICategoryGetter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/Interfaces/ICategoryRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/category/Interfaces/ICategoryRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/actions/CorrectionAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/category/actions/CorrectionAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/plugins/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/plugins/Routing.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/repositories/JsonCategoryRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/main/kotlin/com/team8/category/repositories/JsonCategoryRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/CategoryActionShould.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/categoryTest/CategoryActionShould.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/CategoryRoutingShould.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/categoryTest/CategoryRoutingShould.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/CategoryShould.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/categoryTest/CategoryShould.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/CorrectionActionShould.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/categoryTest/CorrectionActionShould.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/JsonCategoryRepositoryShould.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryAPI/src/test/kotlin/com/team8/categoryTest/JsonCategoryRepositoryShould.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,15 +50,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Theo/Desktop/categoryapi&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/IdeaProjects/categoryapi/CategoryAPI",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -58,6 +70,9 @@
       <workItem from="1658246412142" duration="868000" />
       <workItem from="1658268197703" duration="187000" />
       <workItem from="1658437037877" duration="35000" />
+      <workItem from="1659204603129" duration="50000" />
+      <workItem from="1659204883487" duration="1252000" />
+      <workItem from="1663714600209" duration="53000" />
     </task>
     <servers />
   </component>

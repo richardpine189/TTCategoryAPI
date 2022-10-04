@@ -1,4 +1,4 @@
-package com.team8.Interfaces
+package com.team8.category.Interfaces
 
 import com.team8.models.Category
 

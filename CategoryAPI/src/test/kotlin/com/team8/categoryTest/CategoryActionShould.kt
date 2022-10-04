@@ -1,7 +1,9 @@
-package com.team8
-import com.team8.Interfaces.*
+package com.team8.categoryTest
+
 import com.team8.actions.CategoryAction
+import com.team8.category.Interfaces.ICategoryRepository
 import com.team8.models.Category
+
 import junit.framework.TestCase.*
 import org.junit.BeforeClass
 import org.junit.Test

@@ -1,7 +1,8 @@
 package com.team8.actions
 
-import com.team8.Interfaces.ICategoryGetter
-import com.team8.Interfaces.ICategoryRepository
+
+import com.team8.category.Interfaces.ICategoryGetter
+import com.team8.category.Interfaces.ICategoryRepository
 import com.team8.models.Category
 
 class CategoryAction(var categoryRepository: ICategoryRepository) : ICategoryGetter {

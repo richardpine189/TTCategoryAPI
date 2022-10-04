@@ -1,4 +1,5 @@
-package com.team8
+package com.team8.categoryTest
+
 
 import com.team8.models.Category
 import org.junit.Test
@@ -15,7 +16,7 @@ class CategoryShould {
         val category = Category("Paises", arrayOf("Argentina", word, "Chile"))
 
         // Assert
-        assertTrue { category.ValidWord(word) }
+        assertTrue { category.validWord(word, letter = 'b') }
     }
 
     @Test
@@ -26,6 +27,6 @@ class CategoryShould {
         val category = Category("Paises", arrayOf("Argentina", "Brasil", "Chile"))
 
         // Assert
-        assertFalse { category.ValidWord(word) }
+        assertFalse { category.validWord(word, letter = 'c') }
     }
 }

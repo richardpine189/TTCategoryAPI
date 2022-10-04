@@ -1,8 +1,7 @@
-package com.team8
+package com.team8.categoryTest
 
-import com.team8.Interfaces.ICategoryGetter
-import com.team8.actions.CategoryAction
-import com.team8.actions.CorrectionAction
+import com.team8.category.Interfaces.ICategoryGetter
+import com.team8.category.actions.CorrectionAction
 import com.team8.models.Category
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -23,7 +22,7 @@ class CorrectionActionShould {
         val action : CorrectionAction = CorrectionAction(categoryAction)
 
         // Act
-        val result = action.isValid(word, categoryString)
+        val result = action.isValid(word, categoryString, letter = 'c')
 
         // Assert
         assertTrue { result }
@@ -40,7 +39,7 @@ class CorrectionActionShould {
         val action : CorrectionAction = CorrectionAction(categoryAction)
 
         // Act
-        val result = action.isValid(word, categoryString)
+        val result = action.isValid(word, categoryString, letter = 'c')
 
         // Assert
         assertFalse { result }

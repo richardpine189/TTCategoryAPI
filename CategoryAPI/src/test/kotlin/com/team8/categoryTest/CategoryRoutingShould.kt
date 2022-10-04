@@ -1,18 +1,12 @@
-package com.team8
-
-import com.team8.models.Category
-import io.ktor.client.call.*
+package com.team8.categoryTest
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.server.testing.*
 import junit.framework.TestCase.assertEquals
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.decodeFromString
 import org.junit.Test
-import kotlin.reflect.typeOf
-import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 

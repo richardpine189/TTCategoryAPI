@@ -1,6 +1,6 @@
-package com.team8.actions
+package com.team8.category.actions
 
-import com.team8.Interfaces.ICategoryGetter
+import com.team8.category.Interfaces.ICategoryGetter
 
 class CorrectionAction(val CategoryAction: ICategoryGetter) {
     fun isValid(word: String, categoryString: String, letter: Char): Boolean {
@@ -9,6 +9,6 @@ class CorrectionAction(val CategoryAction: ICategoryGetter) {
         {
             return false
         }
-        return category.ValidWord(word, letter)
+        return category.validWord(word, letter)
     }
 }
