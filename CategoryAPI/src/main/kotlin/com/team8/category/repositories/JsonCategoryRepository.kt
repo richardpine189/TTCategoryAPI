@@ -8,13 +8,13 @@ import java.io.File
 
 class JsonCategoryRepository(private val filePath: String = "./src/test/testCategories.json") : ICategoryRepository {
 
-    fun GetAllCategories() : Array<Category> {
+    fun getAllCategories() : Array<Category> {
         val jsonString = File(filePath).readText(Charsets.UTF_8)
         return Json.decodeFromString(jsonString)
     }
 
-    override fun GetCategories(amountCategories: Int?): Array<Category> {
-        var categoryArray = GetAllCategories()
+    override fun getCategories(amountCategories: Int?): Array<Category> {
+        var categoryArray = getAllCategories()
         categoryArray.shuffle()
 
         amountCategories?.let {
@@ -24,14 +24,14 @@ class JsonCategoryRepository(private val filePath: String = "./src/test/testCate
         return categoryArray
     }
 
-    override fun GetCategoryNames(amountCategories: Int?): Array<String> {
-        val categoryArray = GetCategories(amountCategories)
+    override fun getCategoryNames(amountCategories: Int?): Array<String> {
+        val categoryArray = getCategories(amountCategories)
 
         return categoryArray.map { it.categoryName }.toTypedArray()
     }
 
-    override fun GetCategoryByName(name: String): Category {
-        val categories = GetAllCategories()
+    override fun getCategoryByName(name: String): Category {
+        val categories = getAllCategories()
         return categories.first{it.categoryName == name}
     }
 }

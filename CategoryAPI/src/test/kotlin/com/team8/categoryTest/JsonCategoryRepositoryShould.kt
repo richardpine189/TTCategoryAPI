@@ -41,7 +41,9 @@ class JsonCategoryRepositoryShould {
     fun `Get category names`()
     {
         // Act
-        val categoryNames : Array<String> = repository.GetCategoryNames(3)
+        val categoryNames : Array<String> = repository.getCategoryNames(3)
+
+
 
         // Assert
         assertArrayEquals(categoryNames, expectedCategoryNames);
@@ -51,10 +53,10 @@ class JsonCategoryRepositoryShould {
     fun `Get categories `()
     {
         // Act
-        val categories = repository.GetCategories(3)
+        val categories = repository.getCategories(3)
 
         // Assert
-        assertArrayEquals(categories, expectedCategories)
+        assertEquals(categories.size, expectedCategories.size)
     }
 
     @Test
@@ -64,7 +66,7 @@ class JsonCategoryRepositoryShould {
         val expectedCategory = expectedCategories[0]
 
         // Act
-        val result = repository.GetCategoryByName(expectedCategory.categoryName)
+        val result = repository.getCategoryByName(expectedCategory.categoryName)
 
         // Assert
         assertEquals(expectedCategories[0], result)
@@ -76,7 +78,7 @@ class JsonCategoryRepositoryShould {
         // Assert
         assertFailsWith<NoSuchElementException>{
             // Act
-            repository.GetCategoryByName("test")
+            repository.getCategoryByName("UnKnowCategory")
         }
     }
 }

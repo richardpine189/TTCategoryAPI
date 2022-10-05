@@ -1,9 +1,9 @@
 package com.team8.plugins
 
-import com.team8.actions.CategoryAction
-import com.team8.category.Interfaces.ICategoryGetter
+import com.team8.useCases.getCategoriesUseCase.GetCategoriesUseCase
+import com.team8.category.Interfaces.IGetCategories
 import com.team8.category.Interfaces.ICategoryRepository
-import com.team8.category.actions.CorrectionAction
+import com.team8.useCases.getCorrection.GetCorrectionUseCase
 import com.team8.category.repositories.JsonCategoryRepository
 import io.ktor.http.*
 import io.ktor.server.routing.*
@@ -17,7 +17,7 @@ fun Application.configureRouting() {
     routing {
         route("/Categories"){
             get{
-                val action : CategoryAction = CategoryAction(repository)
+                val action = GetCategoriesUseCase(repository)
                 val result = action.GetCategories().toList()
                 call.respond(result)
             }
@@ -25,7 +25,7 @@ fun Application.configureRouting() {
             get("/{amountCategories}"){
                 val amount = call.parameters["amountCategories"]?.toIntOrNull()
 
-                val action : CategoryAction = CategoryAction(repository)
+                val action = GetCategoriesUseCase(repository)
 
                 val result = when(amount)
                 {
@@ -34,10 +34,6 @@ fun Application.configureRouting() {
                 }
 
                 call.respond(result)
-            }
-
-            get("/{name}"){
-
             }
 
         }
@@ -80,9 +76,9 @@ fun Application.configureRouting() {
                         call.respond(HttpStatusCode.BadRequest, "Category must start with letter")
                     }
                     else {
-                        val categoryAction: ICategoryGetter = CategoryAction(repository)
+                        val getCategoriesUseCase: IGetCategories = GetCategoriesUseCase(repository)
 
-                        val action = CorrectionAction(categoryAction)
+                        val action = GetCorrectionUseCase(getCategoriesUseCase)
 
                         var results = arrayOfNulls<Boolean>(numberOfCorrections)
 

@@ -1,6 +1,6 @@
 package com.team8.categoryTest
 
-import com.team8.actions.CategoryAction
+import com.team8.useCases.getCategoriesUseCase.GetCategoriesUseCase
 import com.team8.category.Interfaces.ICategoryRepository
 import com.team8.models.Category
 
@@ -11,11 +11,11 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
 
-class CategoryActionShould {
+class GetCategoriesUseCaseShould {
     companion object {
 
         @JvmStatic
-        lateinit var categoryAction: CategoryAction
+        lateinit var getCategoriesUseCase: GetCategoriesUseCase
         @JvmStatic
         lateinit var initializeArray: Array<String>
         @JvmStatic
@@ -34,28 +34,28 @@ class CategoryActionShould {
             )
 
             val categoryRepository: ICategoryRepository = mock()
-            whenever(categoryRepository.GetCategoryNames(5)).thenReturn(initializeArray)
-            whenever(categoryRepository.GetCategoryNames(1)).thenReturn(initializeArray.sliceArray(0..0))
-            whenever(categoryRepository.GetCategoryByName(categoryArray[0].categoryName)).thenReturn(categoryArray[0])
-            categoryAction = CategoryAction(categoryRepository)
+            whenever(categoryRepository.getCategoryNames(5)).thenReturn(initializeArray)
+            whenever(categoryRepository.getCategoryNames(1)).thenReturn(initializeArray.sliceArray(0..0))
+            whenever(categoryRepository.getCategoryByName(categoryArray[0].categoryName)).thenReturn(categoryArray[0])
+            getCategoriesUseCase = GetCategoriesUseCase(categoryRepository)
         }
     }
     @Test
     fun `Given a request return five categories objects`()
     {
-        assertEquals(initializeArray, categoryAction.GetCategories(5))
+        assertEquals(initializeArray, getCategoriesUseCase.GetCategories(5))
     }
 
     @Test
     fun `Given a request return one category object`()
     {
-        assertTrue(initializeArray.contains(categoryAction.GetCategories(1)[0]))
+        assertTrue(initializeArray.contains(getCategoriesUseCase.GetCategories(1)[0]))
     }
 
     @Test
     fun `Check the return array's size`()
     {
-        assertEquals(1, categoryAction.GetCategories(1).size)
+        assertEquals(1, getCategoriesUseCase.GetCategories(1).size)
     }
 
     @Test
@@ -64,7 +64,7 @@ class CategoryActionShould {
         val expectedCategory = categoryArray[0]
 
         // Act
-        val result = categoryAction.GetCategoryByName(expectedCategory.categoryName)
+        val result = getCategoriesUseCase.GetCategoryByName(expectedCategory.categoryName)
 
         // Assert
         assertEquals(expectedCategory, result)

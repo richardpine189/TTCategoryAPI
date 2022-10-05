@@ -11,7 +11,7 @@ import kotlin.test.assertTrue
 
 
 class CategoryRoutingShould {
-
+    /*
     @Test
     fun `Get OK Status when GetAllCategories`() {
         testApplication {
@@ -55,5 +55,5 @@ class CategoryRoutingShould {
 
             assertEquals(expectedSize, deserializedResponse.size)
         }
-    }
+    }*/
 }
