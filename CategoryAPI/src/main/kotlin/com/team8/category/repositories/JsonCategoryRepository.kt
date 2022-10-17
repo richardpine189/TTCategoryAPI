@@ -13,7 +13,7 @@ class JsonCategoryRepository(private val filePath: String = "./src/test/testCate
         return Json.decodeFromString(jsonString)
     }
 
-    override fun getCategories(amountCategories: Int?): Array<Category> {
+    override suspend fun getCategories(amountCategories: Int?): Array<Category> {
         var categoryArray = getAllCategories()
         categoryArray.shuffle()
 
@@ -24,13 +24,13 @@ class JsonCategoryRepository(private val filePath: String = "./src/test/testCate
         return categoryArray
     }
 
-    override fun getCategoryNames(amountCategories: Int?): Array<String> {
+    override suspend fun getCategoryNames(amountCategories: Int?): Array<String> {
         val categoryArray = getCategories(amountCategories)
 
         return categoryArray.map { it.categoryName }.toTypedArray()
     }
 
-    override fun getCategoryByName(name: String): Category {
+    override suspend fun getCategoryByName(name: String): Category {
         val categories = getAllCategories()
         return categories.first{it.categoryName == name}
     }

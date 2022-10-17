@@ -7,12 +7,12 @@ import com.team8.models.Category
 
 class GetCategoriesUseCase(var categoryRepository: ICategoryRepository) : IGetCategories {
 
-    override fun GetCategories(amountCategories: Int?): Array<String> {
+    override suspend fun GetCategories(amountCategories: Int?): Array<String> {
         var tempCategories = categoryRepository.getCategoryNames(amountCategories)
         return tempCategories
     }
 
-    override fun GetCategoryByName(name: String): Category? {
+    override suspend fun GetCategoryByName(name: String): Category? {
         return try {
             categoryRepository.getCategoryByName(name)
         } catch(ex : NoSuchElementException) {
