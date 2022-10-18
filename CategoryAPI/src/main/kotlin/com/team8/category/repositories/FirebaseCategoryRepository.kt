@@ -9,6 +9,7 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import java.util.*
 
 class FirebaseCategoryRepository(val repositoryPath : String) : ICategoryRepository {
     suspend fun getAllCategories() : Array<Category> {
@@ -18,7 +19,7 @@ class FirebaseCategoryRepository(val repositoryPath : String) : ICategoryReposit
 
         if(response.status == HttpStatusCode.NotFound)
         {
-            throw Exception("Match database not available.")
+            throw Exception("Categories database not available.")
         }
 
         if(response.bodyAsText() == "null")
@@ -26,7 +27,11 @@ class FirebaseCategoryRepository(val repositoryPath : String) : ICategoryReposit
             return emptyArray()
         }
 
-        TODO("Not yet implemented")
+        val categoriesMap = Json.decodeFromString<Map<String, Array<String>>>(response.body())
+
+        val categoriesArray = MapToCategories(categoriesMap)
+
+        return categoriesArray
     }
 
     override suspend fun getCategories(amountCategories: Int?): Array<Category> {
@@ -40,7 +45,7 @@ class FirebaseCategoryRepository(val repositoryPath : String) : ICategoryReposit
 
         if(response.status == HttpStatusCode.NotFound)
         {
-            throw Exception("Match database not available.")
+            throw Exception("Categories database not available.")
         }
 
         if(response.bodyAsText() == "null")
@@ -54,6 +59,33 @@ class FirebaseCategoryRepository(val repositoryPath : String) : ICategoryReposit
     }
 
     override suspend fun getCategoryByName(name: String): Category {
-        TODO("Not yet implemented")
+        val client = HttpClient()
+
+        var response : HttpResponse = client.get("$repositoryPath/Categorias/${name}.json")
+
+        if(response.status == HttpStatusCode.NotFound)
+        {
+            throw Exception("Categories database not available.")
+        }
+
+        if(response.bodyAsText() == "null")
+        {
+            throw Exception("The requested category has not been found.")
+        }
+
+        val words = Json.decodeFromString<Array<String>>(response.body())
+
+        return Category(name, words)
+    }
+
+    private fun MapToCategories(map: Map<String, Array<String>>): Array<Category> {
+        var categoryArray : MutableList<Category> = mutableListOf<Category>()
+
+        for (category in map)
+        {
+            categoryArray.add(Category(category.key, category.value))
+        }
+
+        return categoryArray.toTypedArray()
     }
 }
