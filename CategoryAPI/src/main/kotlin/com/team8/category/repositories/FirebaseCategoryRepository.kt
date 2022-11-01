@@ -53,7 +53,11 @@ class FirebaseCategoryRepository(val repositoryPath : String) : ICategoryReposit
             return emptyArray()
         }
 
-        val categoryArray = Json.decodeFromString<Array<String>>(response.body())
+        var categoryArray = Json.decodeFromString<Array<String>>(response.body())
+        categoryArray.shuffle()
+        amountCategories?.let {
+            categoryArray = categoryArray.sliceArray(0 until amountCategories)
+        }
 
         return categoryArray
     }

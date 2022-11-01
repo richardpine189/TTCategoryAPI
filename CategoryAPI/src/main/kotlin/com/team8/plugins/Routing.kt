@@ -3,6 +3,7 @@ package com.team8.plugins
 import com.team8.useCases.getCategoriesUseCase.GetCategoriesUseCase
 import com.team8.category.Interfaces.IGetCategories
 import com.team8.category.Interfaces.ICategoryRepository
+import com.team8.category.repositories.FirebaseCategoryRepository
 import com.team8.useCases.getCorrection.GetCorrectionUseCase
 import com.team8.category.repositories.JsonCategoryRepository
 import io.ktor.http.*
@@ -11,7 +12,8 @@ import io.ktor.server.application.*
 import io.ktor.server.response.*
 
 
-val repository : ICategoryRepository = JsonCategoryRepository("./src/main/kotlin/com/team8/DataBase/Categories.json")
+//val repository : ICategoryRepository = JsonCategoryRepository("./src/main/kotlin/com/team8/DataBase/Categories.json")
+val repository : ICategoryRepository = FirebaseCategoryRepository("https://topic-twister-categories-default-rtdb.firebaseio.com")
 
 fun Application.configureRouting() {
     routing {
